@@ -5,6 +5,6 @@ export type PexelsResponse = {
     page: number,
     perPage: number,
     photos: PexelsImage[],
-    total_results: number,
+    totalResults: number,
 }
 
