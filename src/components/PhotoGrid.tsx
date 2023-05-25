@@ -4,6 +4,7 @@ import type { PexelsImage } from '@/pages/api/types/PexelsImage';
 import React, { useState } from 'react';
 import { Masonry } from '@mui/lab';
 import { LoadingImage } from './LoadingImage';
+import { NoImagesFound } from './NoImagesFound';
 
 type PhotoGridProps =  {
   photos: Array<PexelsImage>;
@@ -35,6 +36,11 @@ export function PhotoGrid({ photos, modal }: PhotoGridProps) {
         // columns={5}
         spacing={1}
       >
+
+        {!photos.length && (
+          <NoImagesFound/>
+        )}
+
         {photos.map((item, index) => (
           <Container key={item.id} onClick={() => handlePhotoClick(item, index)}>
             <LoadingImage image={item} />

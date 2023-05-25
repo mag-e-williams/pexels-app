@@ -6,7 +6,7 @@ const SEARCH_PEXELS_URL = 'https://api.pexels.com/v1/search';
 
 const API_KEY = 'dg0x4maV6RukCQ7yFcGIn50JqBqGGuGusEmlkNDwBNljc3TS43eoN7C9';
 
-export async function fetchPexels(page = 0, search = '', perPage = 30): Promise<PexelsResponse> {
+export async function fetchPexels(page = 0, search = '', perPage = 20): Promise<PexelsResponse> {
   const headers = {
     Authorization: API_KEY
   };
@@ -24,7 +24,6 @@ export async function fetchPexels(page = 0, search = '', perPage = 30): Promise<
       ...e
     }))
     
-
 
     return {
       page: data.page,
