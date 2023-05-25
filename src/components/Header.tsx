@@ -52,7 +52,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header() {
+type HeaderProps =  {
+    searchTerm?: string;
+    onSearchTerm: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function Header({searchTerm, onSearchTerm}: HeaderProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -81,6 +86,8 @@ export default function Header() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              value={searchTerm}
+              onChange={onSearchTerm}
             />
           </Search>
         </Toolbar>
