@@ -78,6 +78,9 @@ export function LoadingImage({ image }: LoadingImageProps) {
           }}>
             <Container 
             sx={{
+              position: 'absolute',
+              bottom: 0,
+              left: 10,
               padding: 2,
               color: 'white',
             }}>
