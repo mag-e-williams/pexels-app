@@ -19,7 +19,7 @@ const IconWrapper = styled('div')(({ theme }) => ({
 export function NoImagesFound() {
 
   return (
-    <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
       <IconWrapper>
         <ImageNotSupportedIcon />
         No Images Found
