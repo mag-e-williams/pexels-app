@@ -43,7 +43,7 @@ export function Homepage() {
     <>
       <Header searchTerm={searchTerm} onSearchTerm={handleSearch}/>
       
-      <Container sx={{ marginTop: 16 }}>
+      <Container sx={{ marginTop: 16, maxWidth: '900px' }}>
         <PhotoGrid photos={pexels} />
       </Container>
 
