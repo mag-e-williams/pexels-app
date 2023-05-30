@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { PexelsImage } from '@/pages/api/types/PexelsImage';
 import React, { useState } from 'react';
-import { Container, Skeleton } from '@mui/material';
+import { Container, Link, Skeleton, Typography } from '@mui/material';
 
 type LoadingImageProps = {
   image: PexelsImage;
@@ -9,6 +9,15 @@ type LoadingImageProps = {
 
 export function LoadingImage({ image }: LoadingImageProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowOverlay(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowOverlay(false);
+  };
 
   return (
     <Container
@@ -22,6 +31,8 @@ export function LoadingImage({ image }: LoadingImageProps) {
           transform: 'scale(1.02)',
         },
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {isLoading && (
         <Skeleton
@@ -52,6 +63,41 @@ export function LoadingImage({ image }: LoadingImageProps) {
           minHeight: 10,
         }}
       />
+
+      {showOverlay && (
+        <Container 
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor:' rgba(0, 0, 0, 0.5)',
+            backdropFilter: 'blur(2px)',
+            borderRadius: 2,
+          }}>
+            <Container 
+            sx={{
+              padding: 2,
+              color: 'white',
+            }}>
+              <Typography variant="h5">
+                {image.photographer}
+              </Typography>
+              <Typography variant="subtitle1">
+                <Link 
+                  href={image.photographer_url} 
+                  color="inherit" 
+                  underline="hover" 
+                  target="_blank"
+                >
+                  {image.photographer_url}
+                </Link>
+              </Typography>
+            </Container>
+        </Container>
+      )}
+
     </Container>
   );
 }
