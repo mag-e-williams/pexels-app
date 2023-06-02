@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Replace API_KEY in `/api/fetchPexels`
+
 First, install all depenencies:
 
 ```bash
