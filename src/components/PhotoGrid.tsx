@@ -33,10 +33,8 @@ export function PhotoGrid({ photos, modal }: PhotoGridProps) {
     >
       <Masonry
         columns={{ xs: 1, sm: 2, md: 2, lg: 3 }}
-        // columns={5}
         spacing={1}
       >
-
         {!photos.length && (
           <NoImagesFound/>
         )}

@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import type { PexelsImage } from '@/types/PexelsImage';
 import React, { useState } from 'react';
-import { Container, Link, Skeleton, Typography } from '@mui/material';
+import { Container, Link, Skeleton, Stack, Typography } from '@mui/material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 type LoadingImageProps = {
   image: PexelsImage;
@@ -73,7 +74,6 @@ export function LoadingImage({ image }: LoadingImageProps) {
             width: '100%',
             height: '100%',
             backgroundColor:' rgba(0, 0, 0, 0.5)',
-            backdropFilter: 'blur(2px)',
             borderRadius: 2,
           }}>
             <Container 
@@ -84,19 +84,23 @@ export function LoadingImage({ image }: LoadingImageProps) {
               padding: 2,
               color: 'white',
             }}>
-              <Typography variant="h5">
-                {image.photographer}
-              </Typography>
-              <Typography variant="subtitle1">
-                <Link 
-                  href={image.photographer_url} 
-                  color="inherit" 
-                  underline="hover" 
-                  target="_blank"
-                >
-                  {image.photographer_url}
-                </Link>
-              </Typography>
+
+
+            <Typography variant="body1">
+              <Link 
+                href={image.photographer_url} 
+                color="inherit" 
+                underline="hover" 
+                target="_blank"
+              >
+                <Stack direction="row" alignItems="center" gap={1}>
+                  {image.photographer}
+                  <OpenInNewIcon />
+                </Stack>
+              </Link>
+            </Typography>
+
+       
             </Container>
         </Container>
       )}

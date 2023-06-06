@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
+import { Container } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,37 +62,47 @@ export default function Header({searchTerm, onSearchTerm}: HeaderProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <ImageSearchIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Pexels
-          </Typography>
-          <Search>
-            <IconWrapper>
-              <SearchIcon />
-            </IconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchTerm}
-              onChange={onSearchTerm}
-            />
-          </Search>
-        </Toolbar>
+        <Container maxWidth="xl">
+
+          <Toolbar disableGutters>
+            <ImageSearchIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                flexGrow: 1,
+              }}
+            >
+              PEXELS
+            </Typography>
+
+            <Search>
+              <IconWrapper>
+                <SearchIcon />
+              </IconWrapper>
+              
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchTerm}
+                onChange={onSearchTerm}
+              />
+            </Search>
+
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );
 }
+
+
