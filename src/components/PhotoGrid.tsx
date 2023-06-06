@@ -1,6 +1,6 @@
 // import type { ContentCardProps } from 'components/contentCards/ContentCard';
 import { Box, Container } from '@mui/material';
-import type { PexelsImage } from '@/pages/api/types/PexelsImage';
+import type { PexelsImage } from '@/types/PexelsImage';
 import React, { useState } from 'react';
 import { Masonry } from '@mui/lab';
 import { LoadingImage } from './LoadingImage';

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Container, Pagination } from '@mui/material';
-import { fetchPexels } from '@/pages/api/fetchPexels';
-import { PexelsImage } from '@/pages/api/types/PexelsImage';
+import { fetchPexels } from '@/api/fetchPexels';
+import { PexelsImage } from '@/types/PexelsImage';
 import { PhotoGrid } from './PhotoGrid';
 import Header from './Header';
 

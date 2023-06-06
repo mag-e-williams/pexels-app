@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { PexelsImage } from '@/pages/api/types/PexelsImage';
+import type { PexelsImage } from '@/types/PexelsImage';
 import React, { useState } from 'react';
 import { Container, Skeleton, styled } from '@mui/material';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';

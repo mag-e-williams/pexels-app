@@ -1,14 +1,14 @@
-import type { PexelsImage } from './types/PexelsImage';
-import type { PexelsResponse } from './types/PexelsResponse';
+import type { PexelsImage } from '../types/PexelsImage';
+import type { PexelsResponse } from '../types/PexelsResponse';
 
 const CURATED_PEXELS_URL = 'https://api.pexels.com/v1/curated';
 const SEARCH_PEXELS_URL = 'https://api.pexels.com/v1/search';
 
-const API_KEY = '$_USER_API_KEY';
+const API_KEY = process.env.API_KEy;
 
 export async function fetchPexels(page = 0, search = '', perPage = 20): Promise<PexelsResponse> {
   const headers = {
-    Authorization: API_KEY
+    Authorization: API_KEY || ''
   };
   
   const base_url = search ? SEARCH_PEXELS_URL : CURATED_PEXELS_URL;

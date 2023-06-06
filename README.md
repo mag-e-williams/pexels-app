@@ -2,15 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Replace API_KEY in `/api/fetchPexels`
+### First, Add your API KEY
 
-First, install all depenencies:
+Create a `.env` file on the top level of the directory and add your Pexels API key as an `API_KEY` variable
+
+### Then, install all depenencies:
 
 ```bash
 npm install
 ```
 
-Then, run the development server:
+### Finally, run the development server:
 
 ```bash
 npm run dev
