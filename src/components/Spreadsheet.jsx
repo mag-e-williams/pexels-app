@@ -7,6 +7,7 @@ const makeCols = (cols) => {
   return Array(cols + 1).fill(0).map((e, i) => {
     if (i == 0) return ''
     const col_i = i-1
+
     const a1 = Math.floor(col_i/ALPHABET.length - 1)
     const a2 = col_i % ALPHABET.length 
 
@@ -28,12 +29,39 @@ const makeGrid = (rows, cols) => {
 export function Spreadsheet({rows, cols}) {
   const [grid, setGrid] = useState(makeGrid(rows, cols))
   const [colArray, setColArray] = useState(makeCols(cols))
-  console.log(colArray)
+
   function handleCellUpdate(val, row, col) {
     const newGrid = [...grid]
     newGrid[row][col] = val
     setGrid([...newGrid])
   }
+
+  const getColumnIndex = (colLetter) => {
+    let index = 0
+    for (let i = 0; i < colLetter.length; i++) {
+      const char = colLetter[i]
+      const position = ALPHABET.indexOf(char) + 1
+      index = index * ALPHABET.length + position
+    }
+    return index
+  }
+
+  function evalCell(val) {
+    if (val.startsWith('=')) {
+      const formula = val.slice(1);
+      const cellRefPattern = /([A-Z]+)(\d+)/g;
+
+      const evaluatedFormula = formula.replace(cellRefPattern, (match, col, row) => {
+        const row_i = row-1
+        const col_i = getColumnIndex(col)-1
+        const referencedCell = grid[row_i][col_i]
+        const referencedCellValue = evalCell(referencedCell)
+        return String(referencedCellValue);
+      })
+      return evaluatedFormula
+    } 
+    return val
+  } 
 
   return (
     <div className='app'>
@@ -62,6 +90,7 @@ export function Spreadsheet({rows, cols}) {
                   type="spreadsheet-field"
                   key={col_i} 
                   onChange={handleCellUpdate} 
+                  evalCell={evalCell}
                   cell={cell_val} 
                   row={row_i} 
                   col={col_i}

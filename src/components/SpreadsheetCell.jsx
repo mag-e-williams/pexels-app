@@ -1,21 +1,15 @@
 import React, {useState} from 'react'
 
-export default function SpreadsheetCell({onChange, cell, row, col, type}) {
+export default function SpreadsheetCell({onChange, evalCell, cell, row, col, type}) {
   const [focus, setFocus] = useState(false)
-  
-  function evalCell(val) {
-    if (val[0] == '=') {
-      return eval(val.slice(1));
-    } 
-    return val
-  } 
+  const [isField, setisField] = useState(type =='spreadsheet-field')
 
   return (
     <input
       type="text"
       className={['spreadsheet-cell', type].join(' ')}
       disabled={type == "spreadsheet-header"}
-      value={!focus ? evalCell(cell) : cell}
+      value={!focus && isField ? evalCell(cell) : cell}
       onChange={(e) => onChange(e.target.value, row, col)}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
