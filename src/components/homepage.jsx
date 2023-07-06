@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Spreadsheet from './Spreadsheet';
+import React from 'react';
+import { Spreadsheet } from './Spreadsheet';
+
+const ROWS = 20;
+const COLS = 20;
 
 export function Homepage() {
-  
-
   return (
-    <Spreadsheet />
+    <Spreadsheet rows={ROWS} cols={COLS}/>
   );
 }
