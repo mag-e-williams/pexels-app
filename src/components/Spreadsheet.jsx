@@ -8,21 +8,16 @@ const makeGrid = (rows, cols) => {
   })
 }
 
-function Cell({onChange, cell, row, col}) {
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function Cell({onChange, evalCell, cell, row, col, isField}) {
   const [focus, setFocus] = useState(false)
-  
-  function evalCell(val) {
-    if (val[0] == '=') {
-      return eval(val.slice(1));
-    } 
-    return val
-  } 
 
   return (
     <input
       type="text"
       className="spreadsheet-field"
-      value={!focus ? evalCell(cell) : cell}
+      value={!focus && isField ? evalCell(cell) : cell}
       onChange={(e) => onChange(e.target.value, row, col)}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
@@ -40,8 +35,16 @@ export function Spreadsheet({rows, cols}) {
     setGrid([...newGrid])
   }
 
+  function evalCell(val) {
+    if (val[0] == '=') {
+      return eval(val.slice(1));
+    } 
+    return val
+  } 
+
   return (
     <div className="app">
+
       {grid.map((row, row_i) => {
         return (
           <div className='row' key={row_i}>
@@ -50,9 +53,12 @@ export function Spreadsheet({rows, cols}) {
                 <Cell
                   key={col_i} 
                   onChange={handleCellUpdate} 
+                  evalCell={evalCell}
                   cell={cell_val} 
                   row={row_i} 
                   col={col_i}
+                  isField={true}
+
                 />
               )
             })}
