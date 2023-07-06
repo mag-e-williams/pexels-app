@@ -46,6 +46,15 @@
   margin-bottom: 10vh;
   text-align: center;
 }
-.row {
+
+.spreadsheet-row {
   display: flex;
+}
+
+.spreadsheet-header {
+  text-align: center;
+}
+
+.spreadsheet-row .spreadsheet-header:first-of-type {
+  width: 80px;
 }
