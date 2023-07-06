@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 
-
 const makeGrid = (rows, cols) => {
   return Array(rows).fill(0).map(e => {
     return (
