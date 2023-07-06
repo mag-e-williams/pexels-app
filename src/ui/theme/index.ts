@@ -12,30 +12,6 @@ export type SxProps = MuiSxProps<AugmentedTheme>;
 export function getTheme(): Theme {
   const themeWithColorMode = extendTheme({
     components: {
-      MuiContainer: {
-        defaultProps: {
-          fixed: true,
-        },
-        styleOverrides: {
-          root: ({ theme }) => ({
-            padding: 0,
-            [theme.breakpoints.up('sm')]: {
-              maxWidth: 510,
-              paddingLeft: 0,
-              paddingRight: 0,
-            },
-            [theme.breakpoints.up('md')]: {
-              maxWidth: 700,
-            },
-            [theme.breakpoints.up('lg')]: {
-              maxWidth: 920,
-            },
-            [theme.breakpoints.up('xl')]: {
-              maxWidth: 1130,
-            },
-          }),
-        },
-      },
     },
   });
 
