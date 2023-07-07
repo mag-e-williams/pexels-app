@@ -46,6 +46,54 @@
   margin-bottom: 10vh;
   text-align: center;
 }
+
 .row {
+  --cell-border-style: 1px solid #c7c7c7;
   display: flex;
 }
+
+.spreadsheet-field {
+  border: none;
+  border-top: var(--cell-border-style);
+  border-left: var(--cell-border-style);
+}
+
+
+.spreadsheet-field:focus-visible , .spreadsheet-header:focus-visible {
+  outline: 2px solid blue;
+}
+
+.row .spreadsheet-header:first-child {
+  width: 60px;
+  align-items: center;
+}
+
+.spreadsheet-header {
+  text-align: center;
+  background: none;
+}
+
+/* .MuiTableCell-head {
+  background-color: #f2f2f2;
+} */
+
+
+
+.MuiTableCell-root {
+  padding: 0;
+  border-right: 1px solid var(--mui-palette-TableCell-border);
+}
+
+/* .MuiTableCell-root:first-child {
+  background-color: #f2f2f2;
+} */
+
+
+.MuiTableCell-root.active{
+  background-color: rgb(222, 233, 255);
+}
+
+.MuiTableCell-root.MuiTableCell-body.field.active{
+  outline: 2px solid blue;
+}
+
